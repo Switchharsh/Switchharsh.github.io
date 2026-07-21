@@ -1,531 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Harsh Khandelwal - ML Researcher specializing in NLP, LLMs, and clinical AI systems. Building the future of medical artificial intelligence.">
-    <title>Harsh Khandelwal | ML Researcher</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Harsh Khandelwal — ML Research Engineer in Erlangen, Germany.">
+    <meta name="theme-color" content="#10263b">
+    <title>Harsh Khandelwal — ML Research Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Noise overlay -->
-    <div class="noise"></div>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- Grid background -->
-    <div class="grid-bg"></div>
-
-    <header>
-        <nav class="nav-container">
-            <a href="#home" class="logo">
-                <span class="logo-bracket">[</span>
-                <span class="logo-text">HK</span>
-                <span class="logo-bracket">]</span>
-            </a>
-            <div class="nav-links">
-                <a href="#about" class="nav-link"><span class="link-num">01</span>about</a>
-                <a href="#experience" class="nav-link"><span class="link-num">02</span>experience</a>
-                <a href="#projects" class="nav-link"><span class="link-num">03</span>projects</a>
-                <a href="#contact" class="nav-link"><span class="link-num">04</span>contact</a>
-            </div>
-            <div class="nav-status">
-                <span class="status-indicator"></span>
-                <span class="status-text">available</span>
-            </div>
+    <header class="site-header">
+        <nav class="shell nav" aria-label="Primary navigation">
+            <a href="#about">01 About</a>
+            <a href="#experience">02 Work</a>
+            <a href="#projects">03 Projects</a>
+            <a href="#contact">04 Contact</a>
         </nav>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-bg">
-                <canvas id="neural-canvas"></canvas>
+    <main id="main-content">
+        <section class="hero shell" aria-labelledby="page-title">
+            <div class="hero-main">
+                <p class="kicker">ML research engineer <span>·</span> Erlangen, Germany</p>
+                <h1 id="page-title">Harsh<br>Khandelwal</h1>
+                <p class="hero-intro">I work on retrieval systems, medical AI, and efficient ML deployment.</p>
             </div>
-            <div class="hero-content">
-                <div class="hero-annotation">
-                    <span class="annotation-line">// research engineer</span>
+            <aside class="hero-notes" aria-label="Current work">
+                <figure class="hero-artifact">
+                    <figcaption><span>PROJECT ARTIFACT</span><strong>RETRIEVAL FLOW</strong></figcaption>
+                    <svg class="artifact-graph" viewBox="0 0 420 180" role="img" aria-labelledby="artifact-title artifact-description">
+                        <title id="artifact-title">Retrieval flow</title>
+                        <desc id="artifact-description">Documents are retrieved, reranked using entities, and returned as source material.</desc>
+                        <path class="artifact-route artifact-route--main" d="M64 108C91 108 112 56 143 56C175 56 205 119 250 119C291 119 318 75 356 75" />
+                        <path class="artifact-route artifact-route--secondary" d="M64 108C163 163 270 161 356 75" />
+                        <g class="artifact-node artifact-node--docs"><circle cx="56" cy="108" r="9" /><text x="56" y="88">30K DOCS</text></g>
+                        <g class="artifact-node artifact-node--retrieve"><circle cx="152" cy="56" r="9" /><text x="152" y="36">RETRIEVE</text></g>
+                        <g class="artifact-node artifact-node--entities"><circle cx="260" cy="119" r="9" /><text x="260" y="145">ENTITIES</text></g>
+                        <g class="artifact-node artifact-node--source"><circle cx="365" cy="75" r="9" /><text x="365" y="55">SOURCES</text></g>
+                    </svg>
+                    <p>Documents → retrieval → entity reranking → sources</p>
+                </figure>
+                <div class="note-line"><span>NOW</span><p>Data Science Working Student<br>Siemens Energy, Nuremberg</p></div>
+                <div class="note-line"><span>STUDY</span><p>M.Sc. Autonomy Technologies<br>FAU Erlangen–Nürnberg · 2026</p></div>
+                <div class="note-line"><span>AREAS</span><p>NLP · RAG · Medical imaging<br>On-device inference</p></div>
+            </aside>
+        </section>
+
+        <section id="about" class="section section--paper">
+            <div class="shell two-column">
+                <div class="section-marker"><span>01</span><span>About</span></div>
+                <div class="section-content about-content">
+                    <h2>Work across research<br>and implementation.</h2>
+                    <p class="lead">I am completing a Master’s degree in Autonomy Technologies at FAU Erlangen–Nürnberg. My current work combines language models, retrieval, automation, and medical-imaging research.</p>
+                    <p>I have worked in industry and research settings on document retrieval, manufacturing analysis, radar-based pose estimation, and clinical report generation. I work mainly with Python, PyTorch, SQL, Docker, vector databases, and cloud ML tools.</p>
+                    <dl class="details-list">
+                        <div><dt>Based in</dt><dd>Erlangen, Germany</dd></div>
+                        <div><dt>Languages</dt><dd>English C1 · German A2</dd></div>
+                        <div><dt>Focus</dt><dd>Retrieval · medical AI · deployment</dd></div>
+                    </dl>
                 </div>
-                <h1 class="hero-title">
-                    <span class="title-line-1">HARSH</span>
-                    <span class="title-line-2">KHANDELWAL</span>
-                </h1>
-                <div class="hero-meta">
-                    <span class="meta-item">
-                        <span class="meta-label">focus:</span>
-                        <span class="meta-value">NLP & Generative AI</span>
-                    </span>
-                    <span class="meta-divider">·</span>
-                    <span class="meta-item">
-                        <span class="meta-label">domain:</span>
-                        <span class="meta-value">Clinical AI Systems</span>
-                    </span>
-                </div>
-                <p class="hero-description">
-                    Fine-tuning Large Language Models, knowledge distillation,
-                    and building efficient real-world medical AI systems that matter.
-                </p>
-                <div class="hero-cta">
-                    <a href="#contact" class="btn-primary">
-                        <span class="btn-text">Let's collaborate</span>
-                        <span class="btn-icon">→</span>
-                    </a>
-                    <a href="#projects" class="btn-secondary">
-                        <span class="btn-text">View work</span>
-                    </a>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <span class="scroll-text">scroll</span>
-                <span class="scroll-line"></span>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-num">01</span>
-                    <h2 class="section-title">About</h2>
-                    <span class="section-line"></span>
+        <section id="experience" class="section section--blue">
+            <div class="shell">
+                <div class="section-marker section-marker--light"><span>02</span><span>Work</span></div>
+                <div class="work-header">
+                    <h2>Work experience</h2>
+                    <p>Industry and research roles.</p>
                 </div>
+                <div class="timeline">
+                    <article class="job">
+                        <p class="job-date">OCT 2025 — PRESENT</p>
+                        <div><h3>Data Science Working Student</h3><p class="job-company">Siemens Energy · Nuremberg</p></div>
+                        <p class="job-copy">Building a multi-agent RAG pipeline for 30,000 documents. Also working on data automation and reporting with Snowflake, Power BI, Azure ML, SAP, and Streamlit.</p>
+                    </article>
+                    <article class="job">
+                        <p class="job-date">FEB 2025 — SEP 2025</p>
+                        <div><h3>AI Intern</h3><p class="job-company">National Instruments / Emerson · Dresden</p></div>
+                        <p class="job-copy">Filed a US patent application for Fast Signature Matching. Built a manufacturing debug assistant with tool-calling agents and statistical similarity search. Implemented a data-drift detection pipeline.</p>
+                    </article>
+                    <article class="job">
+                        <p class="job-date">JUN 2024 — DEC 2024</p>
+                        <div><h3>Student Assistant, ML / Radar</h3><p class="job-company">Institute of Microwaves and Photonics, FAU</p></div>
+                        <p class="job-copy">Developed a radar-based human pose-estimation system and evaluated lightweight RNN architectures for motion capture.</p>
+                    </article>
+                    <article class="job">
+                        <p class="job-date">MAY 2021 — SEP 2023</p>
+                        <div><h3>Consultant → Associate Consultant</h3><p class="job-company">Adnate IT Solutions · Jaipur</p></div>
+                        <p class="job-copy">Developed Java, SQL, and API workflows for enterprise procurement systems.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-                <div class="about-grid">
-                    <div class="about-main">
-                        <p class="about-intro">
-                            I'm an ML researcher pushing the boundaries of <em>Natural Language Processing</em>
-                            and <em>Generative AI</em>. My work lives at the intersection of cutting-edge
-                            research and real-world clinical applications.
-                        </p>
-                        <p class="about-text">
-                            Currently focused on fine-tuning Large Language Models, knowledge distillation
-                            techniques, and building AI systems that help medical professionals make better
-                            decisions. I believe the most impactful AI is the kind that works quietly in the
-                            background, augmenting human expertise rather than replacing it.
-                        </p>
-                        <p class="about-text">
-                            Beyond the terminal: history enthusiast, hiker, and traveler. The best ideas
-                            often come from stepping away from the screen.
-                        </p>
+        <section id="projects" class="section section--paper">
+            <div class="shell two-column">
+                <div class="section-marker"><span>03</span><span>Projects</span></div>
+                <div class="section-content">
+                    <h2>Projects</h2>
+                    <p class="project-intro">Some project repositories are private. They are listed here without code or repository links.</p>
+                    <div class="project-list">
+                        <article class="project-row">
+                            <div class="project-number">01</div>
+                            <div><p class="project-type">RESEARCH PROJECT · PUBLIC REPOSITORY</p><h3>claim2source</h3><p>Evidence-based multilingual retrieval with entity-based reranking. Ranked first of 61 teams at CLEF CheckThat! 2025 and improved the official baseline score by 75%.</p><a class="project-repo" href="https://github.com/faerber-lab/CheckThat2026" target="_blank" rel="noopener">Repository ↗</a></div>
+                            <ul class="project-tags"><li>RAG</li><li>Reranking</li><li>NLP</li></ul>
+                        </article>
+                        <article class="project-row">
+                            <div class="project-number">02</div>
+                            <div><p class="project-type">PERSONAL PROJECT · PRIVATE</p><h3>KernelForge Studio</h3><p>Android ML optimisation toolkit with custom I8MM/NEON kernels, thermal logging, correctness checks, and reproducible benchmarks. Reached a 30.1× exact-output GEMM speedup over a scalar baseline on Dimensity 8400 Ultra.</p></div>
+                            <ul class="project-tags"><li>C++20</li><li>ARMv9</li><li>QNN</li></ul>
+                        </article>
+                        <article class="project-row">
+                            <div class="project-number">03</div>
+                            <div><p class="project-type">RESEARCH PROJECT · PRIVATE</p><h3>CT report generation</h3><p>Tested vision-language models for offline CT report generation. Built a preprocessing path for CT volumes, model containers, and German report output. Presented at BAIOSPHERE MEDICAL 2026.</p></div>
+                            <ul class="project-tags"><li>VLM</li><li>Docker</li><li>QLoRA</li></ul>
+                        </article>
+                        <article class="project-row">
+                            <div class="project-number">04</div>
+                            <div><p class="project-type">IMPLEMENTATION</p><h3>MedGemma fine-tuning on CT-RATE</h3><p>QLoRA training and inference workflow for MedGemma-27B on CT volumes, including stratified data preparation and slice-aware training settings.</p></div>
+                            <ul class="project-tags"><li>Python</li><li>MedGemma</li><li>CT-RATE</li></ul>
+                        </article>
                     </div>
-
-                    <div class="about-sidebar">
-                        <div class="education-block">
-                            <span class="block-label">education</span>
-                            <div class="edu-item">
-                                <span class="edu-year">2024—26</span>
-                                <span class="edu-degree">M.Sc. Autonomy Technologies</span>
-                                <span class="edu-school">FAU Erlangen-Nuremberg</span>
-                            </div>
-                            <div class="edu-item">
-                                <span class="edu-year">2016—20</span>
-                                <span class="edu-degree">B.Tech. Electrical & Electronics</span>
-                                <span class="edu-school">NIT Delhi</span>
-                            </div>
-                        </div>
-
-                        <div class="skills-block">
-                            <span class="block-label">core competencies</span>
-                            <div class="skill-tags">
-                                <span class="skill-tag">LLM Fine-tuning</span>
-                                <span class="skill-tag">Knowledge Distillation</span>
-                                <span class="skill-tag">RAG Systems</span>
-                                <span class="skill-tag">Medical Imaging</span>
-                                <span class="skill-tag">Vector Embeddings</span>
-                                <span class="skill-tag">PyTorch</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="section section--dark">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-num">02</span>
-                    <h2 class="section-title">Experience</h2>
-                    <span class="section-line"></span>
-                </div>
-
-                <div class="experience-list">
-                    <article class="exp-card">
-                        <div class="exp-meta">
-                            <span class="exp-date">Oct 2025 — Present</span>
-                            <span class="exp-type">industry</span>
-                        </div>
-                        <div class="exp-content">
-                            <h3 class="exp-role">Data Science Working Student</h3>
-                            <span class="exp-company">Siemens Energy, Nuremberg</span>
-                            <ul class="exp-points">
-                                <li>Automated Snowflake ETL pipeline ingesting SAP data, enabling real-time Tableau dashboards</li>
-                                <li>Reduced manual data retrieval by 1 hour per analysis for project managers</li>
-                                <li>Created Power BI visualization dashboards, streamlining team workflows</li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="exp-card">
-                        <div class="exp-meta">
-                            <span class="exp-date">Jul 2025 — Present</span>
-                            <span class="exp-type">research</span>
-                        </div>
-                        <div class="exp-content">
-                            <h3 class="exp-role">AI Research Collaborator</h3>
-                            <span class="exp-company">ScaDS.AI Lab, TU Dresden</span>
-                            <ul class="exp-points">
-                                <li>Contributed to research on bilingual language conditioning in LLMs published at IJCNLP-AACL 2025</li>
-                                <li>Analyzed model interpretability in Llama3-70B and Qwen-72B</li>
-                                <li>Developing universal pipeline for evidence-based retrieval-generation system</li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="exp-card">
-                        <div class="exp-meta">
-                            <span class="exp-date">Feb — Sept 2025</span>
-                            <span class="exp-type">industry</span>
-                        </div>
-                        <div class="exp-content">
-                            <h3 class="exp-role">AI Workflow Intern</h3>
-                            <span class="exp-company">National Instruments, Emerson — Dresden</span>
-                            <ul class="exp-points">
-                                <li>Awarded performance bonus for 2 invention disclosures submitted to patent committee</li>
-                                <li>Developed manufacturing debug assistant with GenAI and tool-calling agents</li>
-                                <li>Achieved 80%+ accuracy on 90% of test failures</li>
-                                <li>Implemented data drift detection pipeline using statistical tests</li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="exp-card">
-                        <div class="exp-meta">
-                            <span class="exp-date">Jun — Dec 2024</span>
-                            <span class="exp-type">research</span>
-                        </div>
-                        <div class="exp-content">
-                            <h3 class="exp-role">Student Assistant ML/Radar</h3>
-                            <span class="exp-company">Inst. of Microwaves and Photonics, FAU</span>
-                            <ul class="exp-points">
-                                <li>Developed ML-enabled radar-based human pose estimation system</li>
-                                <li>Conducted infrared and radar motion capture studies</li>
-                                <li>Optimized RNN inference speed by evaluating lightweight architectures</li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="exp-card exp-card--compact">
-                        <div class="exp-meta">
-                            <span class="exp-date">2021 — 2023</span>
-                            <span class="exp-type">industry</span>
-                        </div>
-                        <div class="exp-content">
-                            <h3 class="exp-role">Consultant → Associate Consultant</h3>
-                            <span class="exp-company">Adnate IT Solutions Ltd, Jaipur</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-num">03</span>
-                    <h2 class="section-title">Projects</h2>
-                    <span class="section-line"></span>
-                </div>
-
-                <div class="projects-grid">
-                    <article class="project-card">
-                        <div class="project-header">
-                            <span class="project-id">PRJ-001</span>
-                            <span class="project-category">Medical AI</span>
-                        </div>
-                        <h3 class="project-title">RAG Pipeline for XNAT-based PACS</h3>
-                        <p class="project-desc">
-                            Developed a RAG prototype for an XNAT-based PACS system targeting deployment at
-                            University Klinikum Erlangen. Processed DICOM and NIfTI CT files to populate
-                            PostgreSQL with pgvector, enabling vector similarity search on medical image embeddings.
-                        </p>
-                        <div class="project-tech">
-                            <span>Embeddings</span>
-                            <span>Medical Imaging</span>
-                            <span>PostgreSQL</span>
-                            <span>pgvector</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-header">
-                            <span class="project-id">PRJ-002</span>
-                            <span class="project-category">VLM</span>
-                        </div>
-                        <h3 class="project-title">Medical Report Generation Model</h3>
-                        <p class="project-desc">
-                            Dockerized a Vision-Language Model for CT scan report generation at University
-                            Klinikum Erlangen. Built preprocessing pipeline for CT-Scans and translation
-                            layer for English to German medical reports.
-                        </p>
-                        <div class="project-tech">
-                            <span>Docker</span>
-                            <span>VLM</span>
-                            <span>Medical Imaging</span>
-                            <span>NMT</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-header">
-                            <span class="project-id">PRJ-003</span>
-                            <span class="project-category">NLP</span>
-                        </div>
-                        <h3 class="project-title">GRITLM Fine-tuning for Evidence Retrieval</h3>
-                        <p class="project-desc">
-                            Fine-tuned GRITLM embedding model for evidence-based retrieval generation.
-                            Created datasets for CheckThat!2025 challenge in preparation for CLEF 2026.
-                        </p>
-                        <div class="project-tech">
-                            <span>Fine-tuning</span>
-                            <span>RAG</span>
-                            <span>Multi-language</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card project-card--featured">
-                        <div class="project-header">
-                            <span class="project-id">PRJ-004</span>
-                            <span class="project-category">Knowledge Distillation</span>
-                        </div>
-                        <h3 class="project-title">MobileLLM-Distill: On-Device LLM</h3>
-                        <p class="project-desc">
-                            Implemented 1B-parameter student model from scratch with knowledge distillation
-                            from 3B teacher (LLaMA 3.2). Achieved desktop inference at 45 tokens/sec and
-                            mobile-ready INT8 quantization under 1GB. Built end-to-end pipeline targeting
-                            Snapdragon 8 Elite SoCs.
-                        </p>
-                        <div class="project-tech">
-                            <span>PyTorch</span>
-                            <span>Knowledge Distillation</span>
-                            <span>GGUF</span>
-                            <span>llama.cpp</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-header">
-                            <span class="project-id">PRJ-005</span>
-                            <span class="project-category">RecSys</span>
-                        </div>
-                        <h3 class="project-title">Content-Based Podcast Recommendation</h3>
-                        <p class="project-desc">
-                            Reduced data processing time by 50% with Python pipeline processing 10K+ RSS
-                            feeds using parallel operations. Achieved 85% accuracy with sentence-transformer
-                            embeddings and cosine similarity matching.
-                        </p>
-                        <div class="project-tech">
-                            <span>Vector Embeddings</span>
-                            <span>Semantic Search</span>
-                            <span>Python</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section section--dark">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-num">04</span>
-                    <h2 class="section-title">Contact</h2>
-                    <span class="section-line"></span>
-                </div>
-
-                <div class="contact-content">
-                    <p class="contact-intro">
-                        Ready to collaborate on cutting-edge AI projects?<br>
-                        Let's build something that matters.
-                    </p>
-
-                    <div class="contact-links">
-                        <a href="mailto:deharshkhandelwal@gmail.com" class="contact-link">
-                            <span class="link-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                    <polyline points="22,6 12,13 2,6"/>
-                                </svg>
-                            </span>
-                            <span class="link-text">deharshkhandelwal@gmail.com</span>
-                            <span class="link-arrow">→</span>
-                        </a>
-                        <a href="https://github.com/Switchharsh" target="_blank" class="contact-link">
-                            <span class="link-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                                </svg>
-                            </span>
-                            <span class="link-text">GitHub</span>
-                            <span class="link-arrow">→</span>
-                        </a>
-                        <a href="https://linkedin.com/in/harsh-khandelwal" target="_blank" class="contact-link">
-                            <span class="link-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                    <rect x="2" y="9" width="4" height="12"/>
-                                    <circle cx="4" cy="4" r="2"/>
-                                </svg>
-                            </span>
-                            <span class="link-text">LinkedIn</span>
-                            <span class="link-arrow">→</span>
-                        </a>
-                        <a href="https://huggingface.co/suitch" target="_blank" class="contact-link">
-                            <span class="link-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                                    <line x1="9" y1="9" x2="9.01" y2="9"/>
-                                    <line x1="15" y1="9" x2="15.01" y2="9"/>
-                                </svg>
-                            </span>
-                            <span class="link-text">HuggingFace</span>
-                            <span class="link-arrow">→</span>
-                        </a>
+        <section id="contact" class="contact">
+            <div class="shell contact-grid">
+                <div class="section-marker section-marker--light"><span>04</span><span>Contact</span></div>
+                <div>
+                    <h2>Contact</h2>
+                    <a class="email" href="mailto:deharshkhandelwal@gmail.com">deharshkhandelwal@gmail.com</a>
+                    <div class="socials" aria-label="Social links">
+                        <a href="https://linkedin.com/in/harsh-khandelwal" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+                        <a href="https://github.com/Switchharsh" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+                        <a href="https://huggingface.co/suitch" target="_blank" rel="noopener">Hugging Face <span aria-hidden="true">↗</span></a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <span class="footer-text">© 2025 Harsh Khandelwal</span>
-            <span class="footer-divider">·</span>
-            <span class="footer-text">Crafted with precision</span>
-        </div>
-    </footer>
-
-    <script>
-        // Neural network canvas animation
-        const canvas = document.getElementById('neural-canvas');
-        const ctx = canvas.getContext('2d');
-        let nodes = [];
-        let connections = [];
-        let mouseX = 0;
-        let mouseY = 0;
-
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initNodes();
-        }
-
-        function initNodes() {
-            nodes = [];
-            connections = [];
-            const numNodes = Math.floor((canvas.width * canvas.height) / 25000);
-
-            for (let i = 0; i < numNodes; i++) {
-                nodes.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.3,
-                    vy: (Math.random() - 0.5) * 0.3,
-                    radius: Math.random() * 2 + 1
-                });
-            }
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Update and draw nodes
-            nodes.forEach((node, i) => {
-                // Mouse influence
-                const dx = mouseX - node.x;
-                const dy = mouseY - node.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 200) {
-                    node.vx += dx * 0.00005;
-                    node.vy += dy * 0.00005;
-                }
-
-                node.x += node.vx;
-                node.y += node.vy;
-
-                // Bounce off edges
-                if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-                if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-
-                // Draw connections
-                nodes.forEach((other, j) => {
-                    if (i >= j) return;
-                    const dx = node.x - other.x;
-                    const dy = node.y - other.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 150) {
-                        ctx.beginPath();
-                        ctx.moveTo(node.x, node.y);
-                        ctx.lineTo(other.x, other.y);
-                        const alpha = (1 - dist / 150) * 0.15;
-                        ctx.strokeStyle = `rgba(245, 158, 11, ${alpha})`;
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
-                    }
-                });
-
-                // Draw node
-                ctx.beginPath();
-                ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(245, 158, 11, 0.6)';
-                ctx.fill();
-            });
-
-            requestAnimationFrame(draw);
-        }
-
-        window.addEventListener('resize', resize);
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        resize();
-        draw();
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.section, .exp-card, .project-card').forEach(el => {
-            el.classList.add('fade-in');
-            observer.observe(el);
-        });
-    </script>
+    <footer class="site-footer shell"><span>Harsh Khandelwal</span><span>2026</span></footer>
 </body>
 </html>
