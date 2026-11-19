@@ -1,0 +1,199 @@
+/* Scanner view: the portfolio as a radiology reading room.
+   Left: a viewer that holds the portrait like a scan (sticky on wide screens).
+   Right: the content written as a structured report, one "series" per section.
+   Dark "reading room" by default, light "daylight" mode via the toggle. */
+:root {
+    --bg: #0b0c0e;
+    --panel: #14161a;
+    --line: #2a2d33;
+    --text: #dfe3e8;
+    --muted: #9aa1ab;
+    --accent: #fbcb02;      /* section labels, numbers: yellow DICOM overlay */
+    --link: #4fd0e6;        /* teal from the portrait's door, brightened for dark */
+    --orange: #f67d19;
+    --viewer: #000;
+    --overlay: #fbcb02;     /* overlay text inside the viewer: always on black */
+    --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color-scheme: dark;
+}
+:root[data-theme="light"] {
+    --bg: #f2f0eb;
+    --panel: #ffffff;
+    --line: #d8d4cb;
+    --text: #15181d;
+    --muted: #59606a;
+    --accent: #0a2671;
+    --link: #0b6f84;
+    --orange: #b8430a;
+    color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, p, dl, dd, ol, ul, figure { margin: 0; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+a:hover { color: var(--text); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+img { display: block; max-width: 100%; height: auto; }
+.skip-link { position: fixed; top: -4rem; left: 1rem; z-index: 50; padding: .5rem .8rem; background: var(--accent); color: var(--bg); }
+.skip-link:focus { top: 1rem; }
+
+/* Top bar */
+.bar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; gap: 1rem;
+    padding: .6rem clamp(16px, 2.5vw, 28px);
+    background: var(--panel); border-bottom: 1px solid var(--line);
+    font: 500 .78rem var(--mono);
+}
+.bar-id { color: var(--accent); white-space: nowrap; font-weight: 600; letter-spacing: .04em; }
+.tabs { display: flex; gap: .3rem; overflow-x: auto; scrollbar-width: none; flex: 1; }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs a { flex: none; padding: .35rem .6rem; border: 1px solid var(--line); color: var(--muted); text-decoration: none; white-space: nowrap; }
+.tabs a:hover { color: var(--text); }
+.tabs a.on { color: var(--text); border-color: var(--accent); }
+.tabs b { color: var(--accent); font-weight: 600; margin-right: .3rem; }
+.tool { flex: none; padding: .35rem .6rem; border: 1px solid var(--line); background: transparent; color: var(--muted); font: inherit; cursor: pointer; }
+.tool:hover { color: var(--text); border-color: var(--muted); }
+
+/* Layout */
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+
+/* Viewer */
+.viewer {
+    position: sticky; top: 2.9rem; height: calc(100vh - 2.9rem);
+    display: grid; place-items: center; overflow: hidden;
+    background: var(--viewer); color: var(--overlay);
+}
+/* leave ~6rem above and below the image so the corner text and controls sit on black, not on the portrait */
+.viewer img {
+    max-height: calc(100% - 13rem); width: auto; max-width: 78%;
+    filter: grayscale(1) contrast(var(--c, 1.25)) brightness(var(--b, .95));
+    transition: filter .35s;
+}
+.viewer.colour img { filter: none; }
+.ov { position: absolute; padding: .9rem 1rem; font: .74rem/1.5 var(--mono); text-shadow: 0 0 3px #000; pointer-events: none; text-transform: uppercase; }
+.ov b { font-size: .95rem; letter-spacing: .02em; }
+.tl { top: 0; left: 0; } .tr { top: 0; right: 0; text-align: right; }
+.bl { bottom: 0; left: 0; } .br { bottom: 0; right: 0; text-align: right; }
+.cross { position: absolute; inset: 0; pointer-events: none; }
+.cross::before, .cross::after { content: ''; position: absolute; background: rgba(79, 208, 230, .35); }
+.cross::before { left: 50%; top: 2.5rem; bottom: 2.5rem; width: 1px; }
+.cross::after { top: 50%; left: 2.5rem; right: 2.5rem; height: 1px; }
+.controls {
+    position: absolute; bottom: 3.6rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem .8rem; align-items: center;
+    padding: .45rem .75rem; background: rgba(0, 0, 0, .7); border: 1px solid #2a2d33;
+    font: .72rem var(--mono); color: var(--overlay);
+}
+.controls label { display: flex; align-items: center; gap: .5rem; }
+.controls input { width: 8rem; accent-color: var(--overlay); }
+.controls button { padding: .2rem .5rem; border: 1px solid #555; background: transparent; color: var(--overlay); font: inherit; cursor: pointer; }
+.controls button[aria-pressed="true"] { background: var(--overlay); color: #000; border-color: var(--overlay); }
+
+/* Report */
+.report { padding: clamp(1.5rem, 3vw, 2.75rem) clamp(16px, 3.5vw, 3.25rem) 4rem; border-left: 1px solid var(--line); min-width: 0; }
+.report-head { padding-bottom: 1.5rem; }
+.exam { font: .75rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.report h1 { margin: .4rem 0 .5rem; font: 600 clamp(2rem, 4vw, 3rem)/1.1 var(--sans); letter-spacing: -.01em; }
+.tagline { font-size: 1.1rem; color: var(--muted); }
+
+.series { padding: 2rem 0 1rem; border-top: 1px solid var(--line); }
+.label { display: flex; gap: .6rem; align-items: baseline; margin-bottom: 1.1rem; font: 600 .75rem var(--mono); color: var(--accent); text-transform: uppercase; letter-spacing: .08em; }
+.label span { color: var(--muted); font-weight: 500; }
+.series h2 { margin: -.4rem 0 1rem; font: 600 1.5rem/1.2 var(--sans); }
+.series p + p { margin-top: .9rem; }
+.lead { font-size: 1.15rem; }
+
+.facts { margin-top: 1.5rem; font-size: .95rem; }
+.facts div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: .45rem 0; border-top: 1px dashed var(--line); }
+.facts dt { font: .75rem var(--mono); color: var(--muted); text-transform: uppercase; padding-top: .2rem; }
+
+/* Thesis "study of record" */
+.study { padding: 1.2rem 1.3rem; border: 1px solid var(--line); border-left: 3px solid var(--accent); background: var(--panel); margin-bottom: 2rem; }
+.study h3 { margin: .3rem 0 .6rem; font: 600 1.2rem/1.3 var(--sans); }
+.study ol { margin-top: 1rem; padding: 0; list-style: none; display: grid; gap: .5rem; }
+.study li { display: grid; grid-template-columns: 7rem 1fr; gap: .8rem; font-size: .95rem; }
+.study li a { font: 600 .8rem var(--mono); text-transform: uppercase; padding-top: .15rem; }
+.study .sup { margin-top: 1rem; font-size: .88rem; color: var(--muted); }
+
+/* Findings */
+.findings { padding: 0; list-style: none; counter-reset: f; }
+.finding { counter-increment: f; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .5rem 1rem; padding: 1.2rem 0; border-top: 1px dashed var(--line); scroll-margin-top: 4.5rem; }
+.finding::before { content: counter(f); font: 600 .95rem var(--mono); color: var(--accent); padding-top: .15rem; }
+.finding h3 { font: 600 1.12rem/1.3 var(--sans); }
+.meas { display: inline-block; margin: .35rem .5rem .5rem 0; padding: .1rem .45rem; border: 1px solid var(--orange); color: var(--orange); font: 600 .78rem var(--mono); }
+.meta { display: inline; font: .75rem var(--mono); color: var(--muted); }
+.finding p { margin-top: .2rem; font-size: .97rem; }
+.note { font-size: .9rem; color: var(--muted); margin-bottom: .5rem; }
+
+/* Prior studies (work) */
+.priors { padding: 0; list-style: none; }
+.priors li { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1rem; padding: 1.1rem 0; border-top: 1px dashed var(--line); }
+.date { font: .78rem/1.5 var(--mono); color: var(--accent); text-transform: uppercase; padding-top: .2rem; }
+.priors h3 { font: 600 1.05rem/1.3 var(--sans); }
+.priors .where { font-size: .9rem; color: var(--muted); margin-bottom: .35rem; }
+.priors p:last-child { font-size: .95rem; }
+
+/* Incidental (smaller builds) */
+.sub-h { margin: 1.5rem 0 .6rem; font: 600 .8rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.incidental { padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1.5rem; }
+.incidental li { padding: .9rem 0; border-top: 1px dashed var(--line); font-size: .93rem; }
+.incidental h4 { font: 600 1rem/1.3 var(--sans); margin-bottom: .2rem; }
+
+/* Attachments (awards, papers) */
+.certs { padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+.certs img { border: 1px solid var(--line); background: #fff; transition: transform .2s; }
+.certs a:hover img { transform: translateY(-2px); }
+.certs p { margin-top: .5rem; font-size: .9rem; }
+.place { font: 600 .78rem var(--mono); color: var(--accent); margin-right: .3rem; }
+.also { margin-top: 1.2rem; font-size: .95rem; }
+.pubs { padding: 0; list-style: none; }
+.pubs li { padding: 1rem 0; border-top: 1px dashed var(--line); }
+.venue { font: .74rem var(--mono); color: var(--muted); text-transform: uppercase; }
+.pubs h4 { margin: .25rem 0 .3rem; font: 600 1rem/1.35 var(--sans); }
+.authors { font-size: .88rem; color: var(--muted); }
+.authors strong { color: var(--text); }
+.poster { display: inline-flex; gap: 1rem; align-items: center; margin-top: 1rem; text-decoration: none; }
+.poster img { width: 110px; border: 1px solid var(--line); }
+.poster span { text-decoration: underline; }
+
+/* Impression + contact */
+.impression { padding: 1rem 1.2rem; border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent) 9%, transparent); font-size: 1.05rem; }
+.email { display: inline-block; margin-top: 1.5rem; font: 600 clamp(1rem, 2.4vw, 1.4rem) var(--mono); overflow-wrap: anywhere; }
+.links { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; margin-top: 1rem; font: .85rem var(--mono); }
+.foot { margin-top: 3rem; font: .75rem var(--mono); color: var(--muted); text-transform: uppercase; }
+
+/* View switch (shared look with the poster view) */
+.view-switch {
+    position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 30;
+    padding: .6rem .9rem; background: var(--accent); color: var(--bg);
+    font: 600 .8rem var(--mono); text-decoration: none; box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
+}
+.view-switch:hover { color: var(--bg); filter: brightness(1.08); }
+
+@media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .viewer { position: relative; top: 0; height: min(78vh, 640px); }
+    .report { border-left: 0; }
+    .bar-id { display: none; }
+}
+@media (max-width: 560px) {
+    .ov { padding: .6rem .7rem; font-size: .64rem; }
+    .ov b { font-size: .8rem; }
+    .controls { bottom: 3.2rem; }
+    .controls input { width: 6rem; }
+    .facts div, .priors li, .study li { grid-template-columns: 1fr; gap: .2rem; }
+    .incidental, .certs { grid-template-columns: 1fr; }
+    .view-switch { font-size: .72rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .viewer img, .certs img { transition: none; }
+}
+
+/* Poster-view link in the top bar */
+.tool--switch { color: var(--accent); border-color: var(--accent); text-decoration: none; white-space: nowrap; }
+.tool--switch:hover { color: var(--bg); background: var(--accent); }

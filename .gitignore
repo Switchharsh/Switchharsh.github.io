@@ -1,1 +1,6 @@
-Resume-4.pdf
+# Private source documents: they contain a phone number, home address or student ID.
+# The site uses redacted / resized copies in images/ instead.
+*.pdf
+
+# Original full-size portrait (the site uses images/portrait.webp and .jpg)
+file_000000003db481f49e0a4c2980d363d4.png

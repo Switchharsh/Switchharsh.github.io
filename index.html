@@ -3,150 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Harsh Khandelwal — ML Research Engineer in Erlangen, Germany.">
-    <meta name="theme-color" content="#10263b">
+    <meta name="description" content="Harsh Khandelwal: ML researcher in Erlangen working on 3D medical imaging, vision-language models and retrieval. 3× first place at VLM3D (MICCAI 2026).">
+    <meta name="theme-color" content="#fbcb02">
     <title>Harsh Khandelwal — ML Research Engineer</title>
+    <script>
+        // An explicit ?view=poster (from the scanner's "Poster view" links) always wins and is remembered.
+        // Otherwise, visitors who picked the scanner view last time go straight there.
+        (function () {
+            var wantsPoster = /(?:^|[?&])view=poster(?:&|$)/.test(location.search);
+            try {
+                if (wantsPoster) {
+                    localStorage.setItem('hk-view', 'poster');
+                    history.replaceState(null, '', location.pathname + location.hash); // tidy the URL
+                } else if (localStorage.getItem('hk-view') === 'scanner') {
+                    location.replace('scanner.html' + location.hash);
+                }
+            } catch (e) {}
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,400&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#page-title">Skip to content</a>
 
-    <header class="site-header">
-        <nav class="shell nav" aria-label="Primary navigation">
-            <a href="#about">01 About</a>
-            <a href="#experience">02 Work</a>
-            <a href="#projects">03 Projects</a>
-            <a href="#contact">04 Contact</a>
-        </nav>
-    </header>
+    <div class="wall">
+        <header class="site-header shell">
+            <a class="brand" href="#">H.K.</a>
+            <nav class="nav" aria-label="Primary navigation">
+                <a href="#about">About</a>
+                <a href="#experience">Work</a>
+                <a href="#projects">Projects</a>
+                <a href="#recognition">Recognition</a>
+                <a href="#contact">Contact</a>
+                <a class="nav-scan" href="scanner.html" data-view="scanner">Scanner view ⇄</a>
+            </nav>
+        </header>
+
+        <section class="hero shell" aria-labelledby="page-title">
+            <div class="hero-text">
+                <h1 id="page-title" class="misprint" data-text="Harsh Khandelwal">Harsh Khandelwal</h1>
+                <p class="hero-intro">ML research engineer in Erlangen, Germany. I work on <mark>retrieval systems</mark>, <mark>medical AI</mark>, and <mark>efficient ML deployment</mark>.</p>
+                <dl class="facts">
+                    <div><dt>Now</dt><dd>Data Science Working Student, Siemens Energy, Nuremberg</dd></div>
+                    <div><dt>Study</dt><dd>M.Sc. Autonomy Technologies, FAU Erlangen–Nürnberg, expected March 2027</dd></div>
+                    <div><dt>Awards</dt><dd>3× first place and 1× second, VLM3D Challenge at MICCAI 2026</dd></div>
+                    <div><dt>Areas</dt><dd>NLP, RAG, medical imaging, on-device inference</dd></div>
+                </dl>
+            </div>
+            <figure class="portrait">
+                <a class="portrait-link" href="scanner.html" data-view="scanner" aria-label="View this site as a scan">
+                <picture>
+                    <source srcset="images/portrait.webp" type="image/webp">
+                    <img src="images/portrait.jpg" width="720" height="960" alt="Painted portrait of Harsh: dark hair, glasses and beard, navy shirt, in front of a yellow wall and a teal door.">
+                </picture>
+                <span class="scan-tag" aria-hidden="true">View me as a scan ⇄</span>
+                </a>
+            </figure>
+        </section>
+    </div>
 
     <main id="main-content">
-        <section class="hero shell" aria-labelledby="page-title">
-            <div class="hero-main">
-                <p class="kicker">ML research engineer <span>·</span> Erlangen, Germany</p>
-                <h1 id="page-title">Harsh<br>Khandelwal</h1>
-                <p class="hero-intro">I work on retrieval systems, medical AI, and efficient ML deployment.</p>
-            </div>
-            <aside class="hero-notes" aria-label="Current work">
-                <figure class="hero-artifact">
-                    <figcaption><span>PROJECT ARTIFACT</span><strong>RETRIEVAL FLOW</strong></figcaption>
-                    <svg class="artifact-graph" viewBox="0 0 420 180" role="img" aria-labelledby="artifact-title artifact-description">
-                        <title id="artifact-title">Retrieval flow</title>
-                        <desc id="artifact-description">Documents are retrieved, reranked using entities, and returned as source material.</desc>
-                        <path class="artifact-route artifact-route--main" d="M64 108C91 108 112 56 143 56C175 56 205 119 250 119C291 119 318 75 356 75" />
-                        <path class="artifact-route artifact-route--secondary" d="M64 108C163 163 270 161 356 75" />
-                        <g class="artifact-node artifact-node--docs"><circle cx="56" cy="108" r="9" /><text x="56" y="88">30K DOCS</text></g>
-                        <g class="artifact-node artifact-node--retrieve"><circle cx="152" cy="56" r="9" /><text x="152" y="36">RETRIEVE</text></g>
-                        <g class="artifact-node artifact-node--entities"><circle cx="260" cy="119" r="9" /><text x="260" y="145">ENTITIES</text></g>
-                        <g class="artifact-node artifact-node--source"><circle cx="365" cy="75" r="9" /><text x="365" y="55">SOURCES</text></g>
-                    </svg>
-                    <p>Documents → retrieval → entity reranking → sources</p>
-                </figure>
-                <div class="note-line"><span>NOW</span><p>Data Science Working Student<br>Siemens Energy, Nuremberg</p></div>
-                <div class="note-line"><span>STUDY</span><p>M.Sc. Autonomy Technologies<br>FAU Erlangen–Nürnberg · 2026</p></div>
-                <div class="note-line"><span>AREAS</span><p>NLP · RAG · Medical imaging<br>On-device inference</p></div>
-            </aside>
-        </section>
-
-        <section id="about" class="section section--paper">
-            <div class="shell two-column">
-                <div class="section-marker"><span>01</span><span>About</span></div>
-                <div class="section-content about-content">
-                    <h2>Work across research<br>and implementation.</h2>
-                    <p class="lead">I am completing a Master’s degree in Autonomy Technologies at FAU Erlangen–Nürnberg. My current work combines language models, retrieval, automation, and medical-imaging research.</p>
-                    <p>I have worked in industry and research settings on document retrieval, manufacturing analysis, radar-based pose estimation, and clinical report generation. I work mainly with Python, PyTorch, SQL, Docker, vector databases, and cloud ML tools.</p>
-                    <dl class="details-list">
+        <section id="about" class="section shell">
+            <h2 class="tape">About</h2>
+            <div class="about">
+                <p class="lead">I’m finishing my Master’s in Autonomy Technologies at FAU Erlangen–Nürnberg. I just handed in my thesis, which asks how well today’s AI models can read a chest CT scan: spotting what’s wrong, showing where it is, and writing it up as a report.</p>
+                <div>
+                    <p>I’m still early in my research career, and most of what I know I’ve learned working in teams with people I could learn a lot from. The part I enjoy most is checking whether something really works: running one more experiment, or finding out that a good score was good for the wrong reason.</p>
+                    <p>Before my Master’s I spent two years building software at a company in India, and I still like making things people actually use, from tools at work to small apps I build for myself.</p>
+                    <dl class="facts">
                         <div><dt>Based in</dt><dd>Erlangen, Germany</dd></div>
-                        <div><dt>Languages</dt><dd>English C1 · German A2</dd></div>
-                        <div><dt>Focus</dt><dd>Retrieval · medical AI · deployment</dd></div>
+                        <div><dt>Languages</dt><dd>English C1, German A2</dd></div>
+                        <div><dt>Focus</dt><dd>3D medical imaging, VLMs, retrieval</dd></div>
                     </dl>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="section section--blue">
-            <div class="shell">
-                <div class="section-marker section-marker--light"><span>02</span><span>Work</span></div>
-                <div class="work-header">
-                    <h2>Work experience</h2>
-                    <p>Industry and research roles.</p>
-                </div>
-                <div class="timeline">
-                    <article class="job">
-                        <p class="job-date">OCT 2025 — PRESENT</p>
-                        <div><h3>Data Science Working Student</h3><p class="job-company">Siemens Energy · Nuremberg</p></div>
-                        <p class="job-copy">Building a multi-agent RAG pipeline for 30,000 documents. Also working on data automation and reporting with Snowflake, Power BI, Azure ML, SAP, and Streamlit.</p>
-                    </article>
-                    <article class="job">
-                        <p class="job-date">FEB 2025 — SEP 2025</p>
-                        <div><h3>AI Intern</h3><p class="job-company">National Instruments / Emerson · Dresden</p></div>
-                        <p class="job-copy">Filed a US patent application for Fast Signature Matching. Built a manufacturing debug assistant with tool-calling agents and statistical similarity search. Implemented a data-drift detection pipeline.</p>
-                    </article>
-                    <article class="job">
-                        <p class="job-date">JUN 2024 — DEC 2024</p>
-                        <div><h3>Student Assistant, ML / Radar</h3><p class="job-company">Institute of Microwaves and Photonics, FAU</p></div>
-                        <p class="job-copy">Developed a radar-based human pose-estimation system and evaluated lightweight RNN architectures for motion capture.</p>
-                    </article>
-                    <article class="job">
-                        <p class="job-date">MAY 2021 — SEP 2023</p>
-                        <div><h3>Consultant → Associate Consultant</h3><p class="job-company">Adnate IT Solutions · Jaipur</p></div>
-                        <p class="job-copy">Developed Java, SQL, and API workflows for enterprise procurement systems.</p>
-                    </article>
-                </div>
-            </div>
+        <section id="experience" class="section shell">
+            <h2 class="tape tape--orange">Work</h2>
+            <ol class="jobs">
+                <li class="job">
+                    <p class="job-date"><span>Oct 2025</span><span>now</span></p>
+                    <div>
+                        <h3>Data Science Working Student</h3>
+                        <p class="job-meta">Siemens Energy, Nuremberg</p>
+                    </div>
+                    <p class="job-copy">Built a document knowledge base over 30,000+ documents for a multi-agent RAG system answering questions about historical offers. Automated offer generation and escalation, replacing a manual process that took several days, and built a Streamlit-in-Snowflake app that turned a multi-hour SAP data task into one click. Presenter in the company-wide AI/ML community.</p>
+                </li>
+                <li class="job">
+                    <p class="job-date"><span>Feb 2025</span><span>Sep 2025</span></p>
+                    <div>
+                        <h3>AI Intern</h3>
+                        <p class="job-meta">National Instruments / Emerson, Dresden</p>
+                    </div>
+                    <p class="job-copy">Inventor on a US patent application for Fast Signature Matching, plus two invention disclosures; presented the algorithms at NI Tech in Austin and received a performance bonus. Built a manufacturing debug assistant using similarity search over graphical data that reached 80% accuracy and secured funding for a pilot. Implemented ensemble drift detection against a digital-twin baseline.</p>
+                </li>
+                <li class="job">
+                    <p class="job-date"><span>Jun 2024</span><span>Dec 2024</span></p>
+                    <div>
+                        <h3>Student Assistant, ML / Radar</h3>
+                        <p class="job-meta">Institute of Microwaves and Photonics, FAU</p>
+                    </div>
+                    <p class="job-copy">Developed radar-based human pose estimation using ray-tracing-enhanced datasets, ran radar and OptiTrack motion-capture studies, and evaluated lightweight architectures to cut RNN inference time.</p>
+                </li>
+                <li class="job">
+                    <p class="job-date"><span>May 2021</span><span>Sep 2023</span></p>
+                    <div>
+                        <h3>Consultant → Associate Consultant</h3>
+                        <p class="job-meta">Adnate IT Solutions, Jaipur</p>
+                    </div>
+                    <p class="job-copy">Built software and process automation for a major Indian private-sector bank, and led a team delivering several projects.</p>
+                </li>
+            </ol>
         </section>
 
-        <section id="projects" class="section section--paper">
-            <div class="shell two-column">
-                <div class="section-marker"><span>03</span><span>Projects</span></div>
-                <div class="section-content">
-                    <h2>Projects</h2>
-                    <p class="project-intro">Some project repositories are private. They are listed here without code or repository links.</p>
-                    <div class="project-list">
-                        <article class="project-row">
-                            <div class="project-number">01</div>
-                            <div><p class="project-type">RESEARCH PROJECT · PUBLIC REPOSITORY</p><h3>claim2source</h3><p>Evidence-based multilingual retrieval with entity-based reranking. Ranked first of 61 teams at CLEF CheckThat! 2025 and improved the official baseline score by 75%.</p><a class="project-repo" href="https://github.com/faerber-lab/CheckThat2026" target="_blank" rel="noopener">Repository ↗</a></div>
-                            <ul class="project-tags"><li>RAG</li><li>Reranking</li><li>NLP</li></ul>
-                        </article>
-                        <article class="project-row">
-                            <div class="project-number">02</div>
-                            <div><p class="project-type">PERSONAL PROJECT · PRIVATE</p><h3>KernelForge Studio</h3><p>Android ML optimisation toolkit with custom I8MM/NEON kernels, thermal logging, correctness checks, and reproducible benchmarks. Reached a 30.1× exact-output GEMM speedup over a scalar baseline on Dimensity 8400 Ultra.</p></div>
-                            <ul class="project-tags"><li>C++20</li><li>ARMv9</li><li>QNN</li></ul>
-                        </article>
-                        <article class="project-row">
-                            <div class="project-number">03</div>
-                            <div><p class="project-type">RESEARCH PROJECT · PRIVATE</p><h3>CT report generation</h3><p>Tested vision-language models for offline CT report generation. Built a preprocessing path for CT volumes, model containers, and German report output. Presented at BAIOSPHERE MEDICAL 2026.</p></div>
-                            <ul class="project-tags"><li>VLM</li><li>Docker</li><li>QLoRA</li></ul>
-                        </article>
-                        <article class="project-row">
-                            <div class="project-number">04</div>
-                            <div><p class="project-type">IMPLEMENTATION</p><h3>MedGemma fine-tuning on CT-RATE</h3><p>QLoRA training and inference workflow for MedGemma-27B on CT volumes, including stratified data preparation and slice-aware training settings.</p></div>
-                            <ul class="project-tags"><li>Python</li><li>MedGemma</li><li>CT-RATE</li></ul>
-                        </article>
-                    </div>
+        <section id="projects" class="section shell">
+            <h2 class="tape">Projects</h2>
+
+            <article class="thesis">
+                <div class="thesis-body">
+                    <p class="thesis-kicker">Master’s thesis · FAU, AIBE / IDEA Lab · submitted November 2026</p>
+                    <h3>From Scan to Report: Detecting, Segmenting and Reporting Findings in Chest CT</h3>
+                    <p>Reading a chest CT means three things: detecting the abnormalities, locating them, and writing them up in a report. The thesis takes each step in turn and measures where the current state of the art actually stands, on CT-RATE and ReXGroundingCT. Across all three, task design and the choice of metric change how pretrained encoders should be used, and judging clinical accuracy still needs unseen data and expert review.</p>
+                    <ol class="thesis-studies">
+                        <li><a href="#p-vlm3d">Detecting</a><span>8 frozen CT encoders compared; attention over FlexiCT tokens reaches 0.8695 AUROC</span></li>
+                        <li><a href="#p-grounding">Segmenting</a><span>adapting VoxTell’s text-to-mask head raises Dice by 37.8%</span></li>
+                        <li><a href="#p-vlm3d">Reporting</a><span>CRG can’t tell whether a report reflects the scan; GREEN and CRIMSON can</span></li>
+                    </ol>
+                    <p class="thesis-meta">Supervised by Prof. Dr. Bernhard Kainz and Dr. Johanna Müller.</p>
                 </div>
+            </article>
+
+            <p class="note">Most of this is collaborative research, and several repositories are private. Links are given where code or models are public.</p>
+            <div class="projects">
+                <article class="project" id="p-vlm3d">
+                    <p class="stat misprint" data-text="3× 1st">3× 1st</p>
+                    <p class="stat-label">plus a 2nd, VLM3D at MICCAI 2026</p>
+                    <h3>VLM3D: 3D CT and MR classification and report generation</h3>
+                    <p class="project-meta">Collaborative research, FAU · PyTorch, Slurm, MIL, VLMs</p>
+                    <p>Part of the FAU teams that won CT abnormality classification, CT report generation and MR report generation, and placed second in MR abnormality classification (<a href="#awards">certificates</a>). I built a benchmarking framework comparing 10 3D image-encoder families on 50,183 chest CT volumes, cutting storage from a projected 13 TB to 260 GB. For reports, I showed that end-to-end generators were barely grounded in the scan, and that a classify-then-assemble pipeline beat the baseline by +0.165 CRG.</p>
+                </article>
+                <article class="project">
+                    <p class="stat misprint" data-text="1st">1st</p>
+                    <p class="stat-label">of 37 teams, CLEF CheckThat! 2026</p>
+                    <h3><a href="https://github.com/faerber-lab/CheckThat2026" target="_blank" rel="noopener">Claim2Source</a></h3>
+                    <p class="project-meta">Collaborative research, TU Dresden · RAG, reranking, LLM verification</p>
+                    <p>Multilingual retrieval of the scientific paper behind a claim made on social media. I implemented the LLM-based evidence verification that delivered the decisive score gain; the final system reached MRR@5 = 0.7628 across English, German and French and improved on the baseline by 75%. Co-authored <a href="#papers">two CLEF papers</a>.</p>
+                </article>
+                <article class="project" id="p-grounding">
+                    <p class="stat misprint" data-text="11/53">11/53</p>
+                    <p class="stat-label">teams, ReXGroundingCT challenge</p>
+                    <h3>Text-conditioned 3D grounding in chest CT</h3>
+                    <p class="project-meta">Collaborative research, FAU · VoxTell, DDP, HPC</p>
+                    <p>Locating findings from a radiology report inside the 3D scan. Freezing the VoxTell backbone and training only the grounding head lifted leaderboard Dice from 0.280 to 0.332. Analysis showed missed lesions, not mask quality, were the bottleneck. Distributed training with NVMe staging raised GPU utilisation from 10% to 95%, a 7× speedup.</p>
+                </article>
+                <article class="project" id="p-translation">
+                    <p class="stat misprint" data-text="45%">45%</p>
+                    <p class="stat-label">reports corrupted by the top-BLEU system</p>
+                    <h3><a href="https://github.com/Switchharsh/german_medical_translator" target="_blank" rel="noopener">Clinical safety in radiology translation</a></h3>
+                    <p class="project-meta">Research project · NLP, MT evaluation, clinical metrics</p>
+                    <p>Benchmarked 13 translation systems on 296 German–English radiology reports. Fluent output can still flip a negation or drop a measurement: BLEU mis-ranks clinical safety, while claim-entailment and GREEN checks catch factual corruption far better (AUC 0.84–0.92).</p>
+                </article>
+                <article class="project">
+                    <p class="stat misprint" data-text="956">956</p>
+                    <p class="stat-label">clinical CT scans, University Hospital Erlangen</p>
+                    <h3>Medical VLMs on real German CT reports</h3>
+                    <p class="project-meta">University Hospital Erlangen &amp; FAU · VLMs, quantization, evaluation</p>
+                    <p>Evaluated four state-of-the-art medical vision-language models (MedM-VL, MedGemma-27B, CT-CHAT, COLIPRI) on 956 thoracic CT volumes with German free-text reports. Models built specifically for thoracic CT clearly beat broader medical VLMs, but scores stayed low overall. Presented at BAIOSPHERE MEDICAL 2026 (<a href="#papers">poster</a>).</p>
+                </article>
+                <article class="project">
+                    <p class="stat misprint" data-text="3D">3D</p>
+                    <p class="stat-label">life-size AI patient, browser and Apple Vision Pro</p>
+                    <h3><a href="https://github.com/DEBANJANAB991/PsyTrain" target="_blank" rel="noopener">PsyTrain</a></h3>
+                    <p class="project-meta">Hackathon, OTH Amberg-Weiden · made for Apple Vision Pro · three.js, WebXR, ElevenLabs, Claude on Bedrock</p>
+                    <p>A virtual psychiatric patient for practising history-taking. Students build a case in three clicks, talk to the patient out loud in a 3D consultation room, and get turn-by-turn feedback afterwards. The patient can drift off topic or get angry, and its body language follows the conversation. I built most of it: the avatar, live voice conversation, room and patient setup.</p>
+                </article>
+            </div>
+
+            <h3 class="more-title">Models and tools from the thesis</h3>
+            <ul class="more">
+                <li>
+                    <h4><a href="https://huggingface.co/suitch/colipri-qwen-report-generator" target="_blank" rel="noopener">COLIPRI–Qwen report generator</a></h4>
+                    <p>CT report generation from a frozen COLIPRI 3D encoder, a trained projector and Qwen2.5-1.5B, with optional German output.</p>
+                </li>
+                <li>
+                    <h4><a href="https://huggingface.co/suitch/radbert-english-ctrate-classifier" target="_blank" rel="noopener">RadBERT CT-RATE classifiers</a></h4>
+                    <p>Report-to-label classifiers for 18 CT findings, in <a href="https://huggingface.co/suitch/radbert-english-ctrate-classifier" target="_blank" rel="noopener">English</a> and <a href="https://huggingface.co/suitch/radbert-german-ctrate-classifier" target="_blank" rel="noopener">German</a>, used to score generated reports.</p>
+                </li>
+                <li>
+                    <h4>Report-generation evaluation pipeline</h4>
+                    <p>One command from generated reports to classification scores, CRG and NLG metrics, for English and German reports.</p>
+                </li>
+                <li>
+                    <h4><a href="https://huggingface.co/suitch/medgemma-27b-it-4bit" target="_blank" rel="noopener">4-bit MedGemma-27B</a> and <a href="https://huggingface.co/suitch/gemma-4-31B-it-4bit" target="_blank" rel="noopener">Gemma 4 31B</a></h4>
+                    <p>Pre-quantized models that fit on 24 GB GPUs, used to run CT report generation offline on hospital hardware. <a href="https://github.com/Switchharsh/medgemma_finetune" target="_blank" rel="noopener">MedGemma QLoRA fine-tuning code</a> is public.</p>
+                </li>
+            </ul>
+
+            <h3 class="more-title">Other builds</h3>
+            <ul class="more">
+                <li>
+                    <h4>Scientific Discovery Swarm</h4>
+                    <p>Single-use research agents that read the literature, map gaps between fields and propose testable hypotheses, with a human approving every verdict. Built for the All Things Agentic hackathon on Google ADK, Vertex AI and Cloud Run.</p>
+                </li>
+                <li>
+                    <h4>Paper Switch</h4>
+                    <p>Turns scientific PDFs into narrated audio with synchronised highlighting, including spoken equations. Can run fully locally with vLLM and Kokoro TTS.</p>
+                </li>
+                <li>
+                    <h4><a href="https://github.com/Switchharsh/history_immerse" target="_blank" rel="noopener">Parley</a></h4>
+                    <p>A history RPG: put real historical figures in one room and watch them argue in character, rendered like a console-era game.</p>
+                </li>
+                <li>
+                    <h4><a href="https://github.com/Switchharsh/petodoro" target="_blank" rel="noopener">Petodoro</a></h4>
+                    <p>A tiny desktop pet with a pomodoro timer, written in Rust. Runs on Linux, Windows, macOS and Android in about 5 MB of RAM.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="recognition" class="section shell">
+            <h2 class="tape tape--paper">Recognition</h2>
+            <div id="awards" class="sub">
+                <h3 class="more-title">Awards</h3>
+                <p class="lead awards-intro">VLM3D Challenge 2026 (Vision-Language Modeling in 3D Medical Imaging), held at MICCAI 2026. Team awards with colleagues at FAU Erlangen–Nürnberg.</p>
+            <ul class="certs">
+                    <li>
+                        <a href="images/awards/vlm3d-2026-ct-classification.webp" target="_blank" rel="noopener">
+                            <img src="images/awards/vlm3d-2026-ct-classification-thumb.webp" width="560" height="396" loading="lazy" alt="VLM3D Challenge 2026 certificate: 1st place, CT abnormality classification, presented to Harsh Khandelwal.">
+                        </a>
+                        <p><strong class="place">1st</strong> CT abnormality classification</p>
+                    </li>
+                    <li>
+                        <a href="images/awards/vlm3d-2026-ct-report-generation.webp" target="_blank" rel="noopener">
+                            <img src="images/awards/vlm3d-2026-ct-report-generation-thumb.webp" width="560" height="396" loading="lazy" alt="VLM3D Challenge 2026 certificate: 1st place, CT report generation, presented to Harsh Khandelwal.">
+                        </a>
+                        <p><strong class="place">1st</strong> CT report generation</p>
+                    </li>
+                    <li>
+                        <a href="images/awards/vlm3d-2026-mr-report-generation.webp" target="_blank" rel="noopener">
+                            <img src="images/awards/vlm3d-2026-mr-report-generation-thumb.webp" width="560" height="396" loading="lazy" alt="VLM3D Challenge 2026 certificate: 1st place, MR report generation, presented to Harsh Khandelwal.">
+                        </a>
+                        <p><strong class="place">1st</strong> MR report generation</p>
+                    </li>
+                    <li>
+                        <a href="images/awards/vlm3d-2026-mr-classification.webp" target="_blank" rel="noopener">
+                            <img src="images/awards/vlm3d-2026-mr-classification-thumb.webp" width="560" height="396" loading="lazy" alt="VLM3D Challenge 2026 certificate: 2nd place, MR abnormality classification, presented to Harsh Khandelwal.">
+                        </a>
+                        <p><strong class="place place--second">2nd</strong> MR abnormality classification</p>
+                    </li>
+            </ul>
+            <p class="awards-also"><strong class="place">1st</strong> of 37 teams, CLEF CheckThat! 2026, Task 1: source retrieval for scientific web claims.</p>
+            </div>
+            <div id="papers" class="sub">
+                <h3 class="more-title">Papers and posters</h3>
+                <div class="papers">
+                <ol class="pubs">
+                    <li>
+                        <p class="pub-venue">CLEF 2026 Working Notes (CEUR-WS)</p>
+                        <h3><a href="https://arxiv.org/abs/2607.04043" target="_blank" rel="noopener">Claim2Source at CheckThat! 2026: Improving Multilingual Scientific Claim-Source Retrieval with Verification-based Re-Ranking</a></h3>
+                        <p class="pub-authors">T. Schreieder, <strong>H. Khandelwal</strong>, Y.-L. Zhong, M. Färber</p>
+                    </li>
+                    <li>
+                        <p class="pub-venue">Best of CLEF 2025 Labs, Springer LNCS 17087</p>
+                        <h3><a href="https://arxiv.org/abs/2607.15875" target="_blank" rel="noopener">Scientific Claim-Source Retrieval Revisited: A Comparative Study of Style Transfer and Re-Ranking</a></h3>
+                        <p class="pub-authors">T. Schreieder, <strong>H. Khandelwal</strong>, Y.-L. Zhong, M. Färber</p>
+                    </li>
+                    <li>
+                        <p class="pub-venue">Poster, BAIOSPHERE MEDICAL 2026, Erlangen</p>
+                        <h3><a href="images/baiosphere-2026-poster.webp" target="_blank" rel="noopener">Evaluation of Medical Vision-Language Models for Automated Thoracic CT Report Generation on a German Clinical Dataset</a></h3>
+                        <p class="pub-authors"><strong>H. Khandelwal</strong>*, F. Weber*, L. Buess, N. Bayerl, S. Arndt, A. Iancu, A. Maier, M. S. May, B. Kainz, N. A. Lackner, J. P. Müller · *equal contribution</p>
+                    </li>
+                </ol>
+                <a class="poster" href="images/baiosphere-2026-poster.webp" target="_blank" rel="noopener">
+                    <img src="images/baiosphere-2026-poster-thumb.webp" width="636" height="900" loading="lazy" alt="The BAIOSPHERE MEDICAL 2026 poster: workflow diagram, results table comparing four VLMs, and qualitative COLIPRI examples.">
+                    <span>Open the full poster ↗</span>
+                </a>
+            </div>
             </div>
         </section>
 
         <section id="contact" class="contact">
-            <div class="shell contact-grid">
-                <div class="section-marker section-marker--light"><span>04</span><span>Contact</span></div>
-                <div>
-                    <h2>Contact</h2>
-                    <a class="email" href="mailto:deharshkhandelwal@gmail.com">deharshkhandelwal@gmail.com</a>
-                    <div class="socials" aria-label="Social links">
-                        <a href="https://linkedin.com/in/harsh-khandelwal" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
-                        <a href="https://github.com/Switchharsh" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
-                        <a href="https://huggingface.co/suitch" target="_blank" rel="noopener">Hugging Face <span aria-hidden="true">↗</span></a>
-                    </div>
-                </div>
+            <div class="shell">
+                <h2 class="tape tape--paper">Contact</h2>
+                <a class="email" href="mailto:deharshkhandelwal@gmail.com">deharshkhandelwal@gmail.com</a>
+                <p class="socials">
+                    <a href="https://linkedin.com/in/harsh-khandelwal" target="_blank" rel="noopener">LinkedIn ↗</a>
+                    <a href="https://github.com/Switchharsh" target="_blank" rel="noopener">GitHub ↗</a>
+                    <a href="https://huggingface.co/suitch" target="_blank" rel="noopener">Hugging Face ↗</a>
+                </p>
             </div>
         </section>
     </main>
 
     <footer class="site-footer shell"><span>Harsh Khandelwal</span><span>2026</span></footer>
+
+    <a class="view-switch" href="scanner.html" data-view="scanner">⇄ Try the scanner view</a>
+    <script>
+        document.querySelectorAll('[data-view]').forEach(function (a) {
+            a.addEventListener('click', function () { try { localStorage.setItem('hk-view', a.dataset.view); } catch (e) {} });
+        });
+    </script>
 </body>
 </html>

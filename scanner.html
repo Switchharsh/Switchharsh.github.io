@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Harsh Khandelwal: ML researcher in Erlangen working on 3D medical imaging, vision-language models and retrieval. Scanner view of the portfolio.">
+    <meta name="theme-color" content="#0b0c0e">
+    <title>Harsh Khandelwal — Scanner view</title>
+    <script>
+        // apply the saved light/dark choice before first paint
+        try { if (localStorage.getItem('hk-scan-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="scanner.css">
+</head>
+<body>
+    <a class="skip-link" href="#report">Skip to content</a>
+
+    <header class="bar">
+        <span class="bar-id">KHANDELWAL, HARSH</span>
+        <nav class="tabs" aria-label="Sections">
+            <a href="#s1" data-series="1"><b>S1</b>History</a>
+            <a href="#s2" data-series="2"><b>S2</b>Findings</a>
+            <a href="#s3" data-series="3"><b>S3</b>Prior studies</a>
+            <a href="#s4" data-series="4"><b>S4</b>Incidental</a>
+            <a href="#s5" data-series="5"><b>S5</b>Attachments</a>
+            <a href="#s6" data-series="6"><b>S6</b>Impression</a>
+        </nav>
+        <a class="tool tool--switch" href="index.html?view=poster" data-view="poster">⇄ Poster view</a>
+        <button class="tool" id="theme" type="button" aria-label="Switch between dark reading room and light daylight mode">Daylight</button>
+    </header>
+
+    <div class="layout">
+        <div class="viewer" id="viewer">
+            <picture>
+                <source srcset="images/portrait.webp" type="image/webp">
+                <img src="images/portrait.jpg" width="720" height="960" alt="Painted portrait of Harsh, shown in greyscale like a scan: dark hair, glasses and beard, in front of a wall and a door.">
+            </picture>
+            <div class="cross" aria-hidden="true"></div>
+            <div class="ov tl" aria-hidden="true"><b>Khandelwal, Harsh</b><br>Erlangen, DE<br>M.Sc. Autonomy Tech · FAU</div>
+            <div class="ov tr" aria-hidden="true">Study: portfolio<br><span id="ov-series">S1 · Clinical history</span><br>Ser <span id="ov-n">1</span>/6</div>
+            <div class="ov bl" aria-hidden="true">Img 1/1<br>Painted portrait</div>
+            <div class="ov br" aria-hidden="true" id="wl-read">W 400 L 40</div>
+            <div class="controls">
+                <label>W/L <input id="wl" type="range" min="0" max="100" value="50" aria-label="Window and level: adjust contrast like a CT viewer"></label>
+                <button type="button" id="colour" aria-pressed="false">Colour</button>
+            </div>
+        </div>
+
+        <main class="report" id="report">
+            <div class="report-head">
+                <p class="exam">Exam: portfolio, non-contrast · Reason: “who is this?”</p>
+                <h1>Harsh Khandelwal</h1>
+                <p class="tagline">ML researcher in Erlangen, working on 3D medical imaging, vision-language models and retrieval.</p>
+            </div>
+
+            <section class="series" id="s1" data-series="1" data-name="Clinical history">
+                <p class="label">S1 <span>Clinical history</span></p>
+                <h2>About</h2>
+                <p class="lead">I’m finishing my Master’s in Autonomy Technologies at FAU Erlangen–Nürnberg. I just handed in my thesis, which asks how well today’s AI models can read a chest CT scan: spotting what’s wrong, showing where it is, and writing it up as a report.</p>
+                <p>I’m still early in my research career, and most of what I know I’ve learned working in teams with people I could learn a lot from. The part I enjoy most is checking whether something really works: running one more experiment, or finding out that a good score was good for the wrong reason.</p>
+                <p>Before my Master’s I spent two years building software at a company in India, and I still like making things people actually use, from tools at work to small apps I build for myself.</p>
+                <dl class="facts">
+                    <div><dt>Now</dt><dd>Data Science Working Student, Siemens Energy, Nuremberg</dd></div>
+                    <div><dt>Study</dt><dd>M.Sc. Autonomy Technologies, FAU Erlangen–Nürnberg, expected March 2027</dd></div>
+                    <div><dt>Awards</dt><dd>3× first place and 1× second, VLM3D Challenge at MICCAI 2026</dd></div>
+                    <div><dt>Languages</dt><dd>English C1, German A2</dd></div>
+                </dl>
+            </section>
+
+            <section class="series" id="s2" data-series="2" data-name="Findings">
+                <p class="label">S2 <span>Findings</span></p>
+                <h2>Research</h2>
+
+                <div class="study">
+                    <p class="venue">Master’s thesis · FAU, AIBE / IDEA Lab · submitted November 2026</p>
+                    <h3>From Scan to Report: Detecting, Segmenting and Reporting Findings in Chest CT</h3>
+                    <p>Reading a chest CT means three things: detecting the abnormalities, locating them, and writing them up in a report. The thesis takes each step in turn and measures where the current state of the art actually stands, on CT-RATE and ReXGroundingCT. Across all three, task design and the choice of metric change how pretrained encoders should be used, and judging clinical accuracy still needs unseen data and expert review.</p>
+                    <ol>
+                        <li><a href="#f-vlm3d">Detecting</a><span>8 frozen CT encoders compared; attention over FlexiCT tokens reaches 0.8695 AUROC</span></li>
+                        <li><a href="#f-grounding">Segmenting</a><span>adapting VoxTell’s text-to-mask head raises Dice by 37.8%</span></li>
+                        <li><a href="#f-vlm3d">Reporting</a><span>CRG can’t tell whether a report reflects the scan; GREEN and CRIMSON can</span></li>
+                    </ol>
+                    <p class="sup">Supervised by Prof. Dr. Bernhard Kainz and Dr. Johanna Müller.</p>
+                </div>
+
+                <p class="note">Most of this is collaborative research, and several repositories are private. Links are given where code or models are public.</p>
+                <ol class="findings">
+                    <li class="finding" id="f-vlm3d">
+                        <div>
+                            <h3>VLM3D: 3D CT and MR classification and report generation</h3>
+                            <span class="meas">3× 1st, 1× 2nd</span><p class="meta">MICCAI 2026 · FAU team · PyTorch, Slurm, MIL, VLMs</p>
+                            <p>Part of the FAU teams that won CT abnormality classification, CT report generation and MR report generation, and placed second in MR abnormality classification (<a href="#s5">certificates</a>). I built a benchmarking framework comparing 10 3D image-encoder families on 50,183 chest CT volumes, cutting storage from a projected 13 TB to 260 GB. For reports, I showed that end-to-end generators were barely grounded in the scan, and that a classify-then-assemble pipeline beat the baseline by +0.165 CRG.</p>
+                        </div>
+                    </li>
+                    <li class="finding">
+                        <div>
+                            <h3><a href="https://github.com/faerber-lab/CheckThat2026" target="_blank" rel="noopener">Claim2Source</a></h3>
+                            <span class="meas">1st of 37</span><p class="meta">CLEF CheckThat! 2026 · TU Dresden · RAG, reranking</p>
+                            <p>Multilingual retrieval of the scientific paper behind a claim made on social media. I implemented the LLM-based evidence verification that delivered the decisive score gain; the final system reached MRR@5 = 0.7628 across English, German and French and improved on the baseline by 75%. Co-authored <a href="#papers">two CLEF papers</a>.</p>
+                        </div>
+                    </li>
+                    <li class="finding" id="f-grounding">
+                        <div>
+                            <h3>Text-conditioned 3D grounding in chest CT</h3>
+                            <span class="meas">11th of 53</span><p class="meta">ReXGroundingCT · FAU · VoxTell, DDP, HPC</p>
+                            <p>Locating findings from a radiology report inside the 3D scan. Freezing the VoxTell backbone and training only the grounding head lifted leaderboard Dice from 0.280 to 0.332. Analysis showed missed lesions, not mask quality, were the bottleneck. Distributed training with NVMe staging raised GPU utilisation from 10% to 95%, a 7× speedup.</p>
+                        </div>
+                    </li>
+                    <li class="finding">
+                        <div>
+                            <h3><a href="https://github.com/Switchharsh/german_medical_translator" target="_blank" rel="noopener">Clinical safety in radiology translation</a></h3>
+                            <span class="meas">45% corrupted</span><p class="meta">13 systems · 296 reports · MT evaluation</p>
+                            <p>Benchmarked 13 translation systems on 296 German–English radiology reports. Fluent output can still flip a negation or drop a measurement: BLEU mis-ranks clinical safety, while claim-entailment and GREEN checks catch factual corruption far better (AUC 0.84–0.92).</p>
+                        </div>
+                    </li>
+                    <li class="finding">
+                        <div>
+                            <h3>Medical VLMs on real German CT reports</h3>
+                            <span class="meas">956 scans</span><p class="meta">University Hospital Erlangen &amp; FAU · VLMs, evaluation</p>
+                            <p>Evaluated four state-of-the-art medical vision-language models (MedM-VL, MedGemma-27B, CT-CHAT, COLIPRI) on 956 thoracic CT volumes with German free-text reports. Models built specifically for thoracic CT clearly beat broader medical VLMs, but scores stayed low overall. Presented at BAIOSPHERE MEDICAL 2026 (<a href="#papers">poster</a>).</p>
+                        </div>
+                    </li>
+                    <li class="finding">
+                        <div>
+                            <h3><a href="https://github.com/DEBANJANAB991/PsyTrain" target="_blank" rel="noopener">PsyTrain</a></h3>
+                            <span class="meas">Apple Vision Pro</span><p class="meta">Hackathon, OTH Amberg-Weiden · three.js, WebXR, ElevenLabs, Claude on Bedrock</p>
+                            <p>A virtual psychiatric patient for practising history-taking, made for Apple Vision Pro. Students build a case in three clicks, talk to the patient out loud in a 3D consultation room, and get turn-by-turn feedback afterwards. The patient can drift off topic or get angry, and its body language follows the conversation. I built most of it: the avatar, live voice conversation, room and patient setup.</p>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="series" id="s3" data-series="3" data-name="Prior studies">
+                <p class="label">S3 <span>Prior studies</span></p>
+                <h2>Work</h2>
+                <ol class="priors">
+                    <li>
+                        <p class="date">Oct 2025 – now</p>
+                        <div>
+                            <h3>Data Science Working Student</h3>
+                            <p class="where">Siemens Energy, Nuremberg</p>
+                            <p>Built a document knowledge base over 30,000+ documents for a multi-agent RAG system answering questions about historical offers. Automated offer generation and escalation, replacing a manual process that took several days, and built a Streamlit-in-Snowflake app that turned a multi-hour SAP data task into one click. Presenter in the company-wide AI/ML community.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="date">Feb 2025 – Sep 2025</p>
+                        <div>
+                            <h3>AI Intern</h3>
+                            <p class="where">National Instruments / Emerson, Dresden</p>
+                            <p>Inventor on a US patent application for Fast Signature Matching, plus two invention disclosures; presented the algorithms at NI Tech in Austin and received a performance bonus. Built a manufacturing debug assistant using similarity search over graphical data that reached 80% accuracy and secured funding for a pilot. Implemented ensemble drift detection against a digital-twin baseline.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="date">Jun 2024 – Dec 2024</p>
+                        <div>
+                            <h3>Student Assistant, ML / Radar</h3>
+                            <p class="where">Institute of Microwaves and Photonics, FAU</p>
+                            <p>Developed radar-based human pose estimation using ray-tracing-enhanced datasets, ran radar and OptiTrack motion-capture studies, and evaluated lightweight architectures to cut RNN inference time.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="date">May 2021 – Sep 2023</p>
+                        <div>
+                            <h3>Consultant → Associate Consultant</h3>
+                            <p class="where">Adnate IT Solutions, Jaipur</p>
+                            <p>Built software and process automation for a major Indian private-sector bank, and led a team delivering several projects.</p>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="series" id="s4" data-series="4" data-name="Incidental findings">
+                <p class="label">S4 <span>Incidental findings</span></p>
+                <h2>Models, tools and other builds</h2>
+                <h3 class="sub-h">From the thesis</h3>
+                <ul class="incidental">
+                    <li>
+                        <h4><a href="https://huggingface.co/suitch/colipri-qwen-report-generator" target="_blank" rel="noopener">COLIPRI–Qwen report generator</a></h4>
+                        <p>CT report generation from a frozen COLIPRI 3D encoder, a trained projector and Qwen2.5-1.5B, with optional German output.</p>
+                    </li>
+                    <li>
+                        <h4>RadBERT CT-RATE classifiers</h4>
+                        <p>Report-to-label classifiers for 18 CT findings, in <a href="https://huggingface.co/suitch/radbert-english-ctrate-classifier" target="_blank" rel="noopener">English</a> and <a href="https://huggingface.co/suitch/radbert-german-ctrate-classifier" target="_blank" rel="noopener">German</a>, used to score generated reports.</p>
+                    </li>
+                    <li>
+                        <h4>Report-generation evaluation pipeline</h4>
+                        <p>One command from generated reports to classification scores, CRG and NLG metrics, for English and German reports.</p>
+                    </li>
+                    <li>
+                        <h4>4-bit MedGemma-27B and Gemma 4 31B</h4>
+                        <p>Pre-quantized models (<a href="https://huggingface.co/suitch/medgemma-27b-it-4bit" target="_blank" rel="noopener">MedGemma</a>, <a href="https://huggingface.co/suitch/gemma-4-31B-it-4bit" target="_blank" rel="noopener">Gemma 4</a>) that fit on 24 GB GPUs, used to run CT report generation offline on hospital hardware. <a href="https://github.com/Switchharsh/medgemma_finetune" target="_blank" rel="noopener">QLoRA fine-tuning code</a> is public.</p>
+                    </li>
+                </ul>
+                <h3 class="sub-h">Other builds</h3>
+                <ul class="incidental">
+                    <li>
+                        <h4>Scientific Discovery Swarm</h4>
+                        <p>Single-use research agents that read the literature, map gaps between fields and propose testable hypotheses, with a human approving every verdict. Built for the All Things Agentic hackathon on Google ADK, Vertex AI and Cloud Run.</p>
+                    </li>
+                    <li>
+                        <h4>Paper Switch</h4>
+                        <p>Turns scientific PDFs into narrated audio with synchronised highlighting, including spoken equations. Can run fully locally with vLLM and Kokoro TTS.</p>
+                    </li>
+                    <li>
+                        <h4><a href="https://github.com/Switchharsh/history_immerse" target="_blank" rel="noopener">Parley</a></h4>
+                        <p>A history RPG: put real historical figures in one room and watch them argue in character, rendered like a console-era game.</p>
+                    </li>
+                    <li>
+                        <h4><a href="https://github.com/Switchharsh/petodoro" target="_blank" rel="noopener">Petodoro</a></h4>
+                        <p>A tiny desktop pet with a pomodoro timer, written in Rust. Runs on Linux, Windows, macOS and Android in about 5 MB of RAM.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="series" id="s5" data-series="5" data-name="Attachments">
+                <p class="label">S5 <span>Attachments</span></p>
+                <h2>Awards and papers</h2>
+                <p>VLM3D Challenge 2026 (Vision-Language Modeling in 3D Medical Imaging) at MICCAI 2026. Team awards with colleagues at FAU Erlangen–Nürnberg.</p>
+                <ul class="certs" style="margin-top:1.2rem">
+                    <li><a href="images/awards/vlm3d-2026-ct-classification.webp" target="_blank" rel="noopener"><img src="images/awards/vlm3d-2026-ct-classification-thumb.webp" width="560" height="396" loading="lazy" alt="VLM3D Challenge 2026 certificate: 1st place, CT abnormality classification, presented to Harsh Khandelwal."></a><p><span class="place">1ST</span>CT abnormality classification</p></li>
+                    <li><a href="images/awards/vlm3d-2026-ct-report-generation.webp" target="_blank" rel="noopener"><img src="images/awards/vlm3d-2026-ct-report-generation-thumb.webp" width="560" height="396" loading="lazy" alt="VLM3D Challenge 2026 certificate: 1st place, CT report generation, presented to Harsh Khandelwal."></a><p><span class="place">1ST</span>CT report generation</p></li>
+                    <li><a href="images/awards/vlm3d-2026-mr-report-generation.webp" target="_blank" rel="noopener"><img src="images/awards/vlm3d-2026-mr-report-generation-thumb.webp" width="560" height="396" loading="lazy" alt="VLM3D Challenge 2026 certificate: 1st place, MR report generation, presented to Harsh Khandelwal."></a><p><span class="place">1ST</span>MR report generation</p></li>
+                    <li><a href="images/awards/vlm3d-2026-mr-classification.webp" target="_blank" rel="noopener"><img src="images/awards/vlm3d-2026-mr-classification-thumb.webp" width="560" height="396" loading="lazy" alt="VLM3D Challenge 2026 certificate: 2nd place, MR abnormality classification, presented to Harsh Khandelwal."></a><p><span class="place">2ND</span>MR abnormality classification</p></li>
+                </ul>
+                <p class="also"><span class="place">1ST</span>of 37 teams, CLEF CheckThat! 2026, Task 1: source retrieval for scientific web claims.</p>
+
+                <h3 class="sub-h" id="papers">Papers and posters</h3>
+                <ol class="pubs">
+                    <li>
+                        <p class="venue">CLEF 2026 Working Notes (CEUR-WS)</p>
+                        <h4><a href="https://arxiv.org/abs/2607.04043" target="_blank" rel="noopener">Claim2Source at CheckThat! 2026: Improving Multilingual Scientific Claim-Source Retrieval with Verification-based Re-Ranking</a></h4>
+                        <p class="authors">T. Schreieder, <strong>H. Khandelwal</strong>, Y.-L. Zhong, M. Färber</p>
+                    </li>
+                    <li>
+                        <p class="venue">Best of CLEF 2025 Labs, Springer LNCS 17087</p>
+                        <h4><a href="https://arxiv.org/abs/2607.15875" target="_blank" rel="noopener">Scientific Claim-Source Retrieval Revisited: A Comparative Study of Style Transfer and Re-Ranking</a></h4>
+                        <p class="authors">T. Schreieder, <strong>H. Khandelwal</strong>, Y.-L. Zhong, M. Färber</p>
+                    </li>
+                    <li>
+                        <p class="venue">Poster, BAIOSPHERE MEDICAL 2026, Erlangen</p>
+                        <h4><a href="images/baiosphere-2026-poster.webp" target="_blank" rel="noopener">Evaluation of Medical Vision-Language Models for Automated Thoracic CT Report Generation on a German Clinical Dataset</a></h4>
+                        <p class="authors"><strong>H. Khandelwal</strong>*, F. Weber*, L. Buess, N. Bayerl, S. Arndt, A. Iancu, A. Maier, M. S. May, B. Kainz, N. A. Lackner, J. P. Müller · *equal contribution</p>
+                        <a class="poster" href="images/baiosphere-2026-poster.webp" target="_blank" rel="noopener"><img src="images/baiosphere-2026-poster-thumb.webp" width="636" height="900" loading="lazy" alt="Thumbnail of the BAIOSPHERE MEDICAL 2026 poster."><span>Open the full poster ↗</span></a>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="series" id="s6" data-series="6" data-name="Impression">
+                <p class="label">S6 <span>Impression</span></p>
+                <h2>Contact</h2>
+                <p class="impression">Curious ML researcher who likes checking whether things really work. No acute findings. Recommend follow-up by email.</p>
+                <a class="email" href="mailto:deharshkhandelwal@gmail.com">deharshkhandelwal@gmail.com</a>
+                <p class="links">
+                    <a href="https://linkedin.com/in/harsh-khandelwal" target="_blank" rel="noopener">LinkedIn ↗</a>
+                    <a href="https://github.com/Switchharsh" target="_blank" rel="noopener">GitHub ↗</a>
+                    <a href="https://huggingface.co/suitch" target="_blank" rel="noopener">Hugging Face ↗</a>
+                </p>
+                <p class="foot">Report signed: H. Khandelwal · 2026</p>
+            </section>
+        </main>
+    </div>
+
+    <a class="view-switch" href="index.html?view=poster" data-view="poster">⇄ Poster view</a>
+
+    <script>
+    (function () {
+        var store = {
+            get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+            set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+        };
+
+        // light / dark
+        var root = document.documentElement, themeBtn = document.getElementById('theme');
+        function syncTheme() { themeBtn.textContent = root.dataset.theme === 'light' ? 'Reading room' : 'Daylight'; }
+        themeBtn.addEventListener('click', function () {
+            if (root.dataset.theme === 'light') { delete root.dataset.theme; store.set('hk-scan-theme', 'dark'); }
+            else { root.dataset.theme = 'light'; store.set('hk-scan-theme', 'light'); }
+            syncTheme();
+        });
+        syncTheme();
+
+        // window / level slider and colour toggle
+        var viewer = document.getElementById('viewer'), wl = document.getElementById('wl'), read = document.getElementById('wl-read'), colour = document.getElementById('colour');
+        wl.addEventListener('input', function () {
+            var t = wl.value / 100;
+            viewer.style.setProperty('--c', (0.7 + t * 1.4).toFixed(2));
+            viewer.style.setProperty('--b', (1.25 - t * 0.6).toFixed(2));
+            read.textContent = 'W ' + Math.round(1500 - t * 1300) + ' L ' + Math.round(-600 + t * 700);
+        });
+        colour.addEventListener('click', function () {
+            var on = viewer.classList.toggle('colour');
+            colour.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+
+        // highlight the current series in the tabs and the viewer overlay
+        var tabs = document.querySelectorAll('.tabs a'), ovName = document.getElementById('ov-series'), ovN = document.getElementById('ov-n');
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (!e.isIntersecting) return;
+                    var n = e.target.dataset.series;
+                    tabs.forEach(function (t) { t.classList.toggle('on', t.dataset.series === n); });
+                    ovName.textContent = 'S' + n + ' · ' + e.target.dataset.name;
+                    ovN.textContent = n;
+                });
+            }, { rootMargin: '-35% 0px -60% 0px' });
+            document.querySelectorAll('.series').forEach(function (s) { io.observe(s); });
+        }
+
+        // remember the chosen view
+        document.querySelectorAll('[data-view]').forEach(function (a) { a.addEventListener('click', function () { store.set('hk-view', a.dataset.view); }); });
+    })();
+    </script>
+</body>
+</html>
